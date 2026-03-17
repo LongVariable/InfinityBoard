@@ -1,0 +1,196 @@
+.card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1.5px solid rgba(232, 227, 216, 0.15);
+  border-radius: 10px;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+.dragSpace {
+  height: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px 8px 12px;
+  gap: 8px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(232, 227, 216, 0.55);
+  cursor: text;
+  user-select: none;
+  font-family: 'JetBrains Mono', monospace;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.titleInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(232, 227, 216, 0.3);
+  color: rgba(232, 227, 216, 0.8);
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.addBtns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.addBtn {
+  background: transparent;
+  border: 1px solid rgba(232, 227, 216, 0.08);
+  color: rgba(232, 227, 216, 0.25);
+  border-radius: 3px;
+  font-size: 9px;
+  cursor: pointer;
+  padding: 2px 6px;
+  transition: color 0.1s, border-color 0.1s;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+
+.addBtn:hover {
+  color: rgba(232, 227, 216, 0.65);
+  border-color: rgba(232, 227, 216, 0.25);
+}
+
+.emptyHint {
+  color: rgba(232, 227, 216, 0.15);
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 12px 8px 12px;
+  font-style: italic;
+}
+
+.tree {
+  padding: 0 0 10px 12px;
+}
+
+/* ── TreeNode styles (shared via module) ── */
+.node {
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+  position: relative;
+}
+
+.indent {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.indentLine {
+  border-left: 1px solid rgba(232, 227, 216, 0.25);
+}
+
+/* CSS-only branch connector — no text characters */
+.connectorSpan {
+  position: relative;
+  display: inline-block;
+  width: 14px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+/* horizontal line at 50% height */
+.connectorSpan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  border-top: 1px solid rgba(232, 227, 216, 0.25);
+}
+
+/* └ : vertical line from top to center only */
+.connectorLast::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 50%;
+  border-left: 1px solid rgba(232, 227, 216, 0.25);
+}
+
+/* ├ : vertical line full height */
+.connectorMiddle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid rgba(232, 227, 216, 0.25);
+}
+
+.nodeName {
+  font-size: 12px;
+  color: rgba(232, 227, 216, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  user-select: none;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.nodeName.folder {
+  color: rgba(232, 227, 216, 0.65);
+  cursor: pointer;
+}
+
+.nodeName.folder:hover {
+  color: rgba(232, 227, 216, 0.9);
+}
+
+.nameInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(232, 227, 216, 0.3);
+  color: rgba(232, 227, 216, 0.8);
+  font-size: 12px;
+  outline: none;
+  font-family: 'JetBrains Mono', monospace;
+  min-width: 60px;
+  flex: 1;
+}
+
+.nodeActions {
+  display: flex;
+  gap: 2px;
+  margin-left: 4px;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  background: transparent;
+  border: none;
+  color: rgba(232, 227, 216, 0.2);
+  border-radius: 2px;
+  font-size: 9px;
+  cursor: pointer;
+  padding: 1px 4px;
+  transition: color 0.1s;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.actionBtn:hover {
+  color: rgba(232, 227, 216, 0.55);
+}

@@ -1,0 +1,204 @@
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  z-index: 1000;
+  background: #050505;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 0 12px;
+  gap: 12px;
+  overflow: visible;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 80px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  overflow: visible;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 160px;
+}
+
+/* Uptime */
+.uptime {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-cream-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Clock */
+.clock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clockDate {
+  font-size: 10px;
+  color: var(--text-cream-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.clockTime {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-cream-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tool separator */
+.sep {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.05);
+  margin: 0 4px;
+  flex-shrink: 0;
+}
+
+/* Tool group (for submenu positioning) */
+.toolGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Tool button */
+.toolBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-cream-muted);
+  cursor: pointer;
+  transition: color 0.1s, background 0.1s;
+  padding: 0;
+  position: relative;
+}
+
+.toolBtn:hover {
+  color: #888;
+  background: rgba(255,255,255,0.04);
+}
+
+.toolBtn.active {
+  color: #e8e3d8;
+  background: rgba(232, 227, 216, 0.08);
+}
+
+/* Small dot on special tools */
+.toolBtn.special::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Submenu */
+.submenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  z-index: 2000;
+  min-width: 38px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.submenu::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #0a0a0a;
+  border-left: 1px solid rgba(255,255,255,0.07);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.subBtn {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.1s, background 0.1s;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 0;
+}
+
+.subBtn:hover {
+  background: rgba(255,255,255,0.06);
+  color: #aaa;
+}
+
+.subBtn.subActive {
+  background: rgba(232, 227, 216, 0.1);
+  color: #e8e3d8;
+}
+
+.colorDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.sizeLine {
+  border-radius: 2px;
+  background: #e8e3d8;
+  width: 14px;
+}
+
+.subDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+  margin: 2px 0;
+}

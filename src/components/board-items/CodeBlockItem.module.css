@@ -1,0 +1,46 @@
+/* Code blocks stay clean / technical — no sketch filter */
+.card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 360px;
+}
+
+.header {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background: #060606;
+  border-bottom: 1px solid #181818;
+  gap: 8px;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2a2a2a;
+}
+
+.langLabel {
+  color: #3a3a3a;
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.editorWrap {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.editorWrap :global(.cm-editor) {
+  background: #0a0a0a !important;
+}

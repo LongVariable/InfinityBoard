@@ -1,0 +1,55 @@
+.canvasView {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.canvasView[data-tool="hand"] {
+  cursor: grab;
+}
+
+.canvasView[data-tool="hand"][data-panning="true"] {
+  cursor: grabbing;
+}
+
+.canvasView[data-tool="select"] {
+  cursor: inherit;
+}
+
+.canvasView[data-tool="pencil"],
+.canvasView[data-tool="shapes"],
+.canvasView[data-tool="arrow"],
+.canvasView[data-tool="text"],
+.canvasView[data-tool="task"],
+.canvasView[data-tool="calendar"],
+.canvasView[data-tool="image"],
+.canvasView[data-tool="code"],
+.canvasView[data-tool="filetree"] {
+  cursor: crosshair;
+}
+
+.canvasView[data-tool="delete"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cline x1='4' y1='4' x2='16' y2='16' stroke='%23ef4444' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='16' y1='4' x2='4' y2='16' stroke='%23ef4444' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 10 10, crosshair;
+}
+
+/* Draw preview rect */
+.drawPreview {
+  position: absolute;
+  border: 1.5px dashed rgba(232, 227, 216, 0.45);
+  border-radius: 4px;
+  pointer-events: none;
+  background: rgba(232, 227, 216, 0.03);
+}
+
+/* Pencil preview SVG overlay */
+.pencilOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
