@@ -1,11 +1,10 @@
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import type { BoardItem, CanvasTransform } from '../../store/types'
 import { useBoardStore } from '../../store/boardStore'
 import { useDraggable } from '../../hooks/useDraggable'
 import { TaskItemComp } from './TaskItem'
 import { TextItemComp } from './TextItem'
 import { CalendarItemComp } from './CalendarItem'
-import { ImageItemComp } from './ImageItem'
 import { CodeBlockItemComp } from './CodeBlockItem'
 import { FileTreeItemComp } from './FileTreeItem'
 import { PencilItemComp } from './PencilItem'
@@ -17,14 +16,13 @@ interface Props {
   transform: CanvasTransform
 }
 
-export function BoardItemWrapper({ item, transform }: Props) {
+export const BoardItemWrapper = memo(function BoardItemWrapper({ item, transform }: Props) {
   const dragItem      = useBoardStore(s => s.dragItem)
   const bringToFront  = useBoardStore(s => s.bringToFront)
   const setSelectedId = useBoardStore(s => s.setSelectedId)
-  const selectedId    = useBoardStore(s => s.selectedId)
+  const isSelected    = useBoardStore(s => s.selectedId === item.id)
   const activeTool    = useBoardStore(s => s.activeTool)
 
-  const isSelected    = selectedId === item.id
   const isDrawingItem = item.type === 'pencil' || item.type === 'shape' || item.type === 'arrow'
 
   const handleDrag = useCallback((id: string, x: number, y: number) => {
@@ -100,7 +98,6 @@ export function BoardItemWrapper({ item, transform }: Props) {
       {item.type === 'task'     && <TaskItemComp      item={item} />}
       {item.type === 'text'     && <TextItemComp      item={item} />}
       {item.type === 'calendar' && <CalendarItemComp  item={item} />}
-      {item.type === 'image'    && <ImageItemComp     item={item} />}
       {item.type === 'code'     && <CodeBlockItemComp item={item} />}
       {item.type === 'filetree' && <FileTreeItemComp  item={item} />}
       {item.type === 'pencil'   && <PencilItemComp    item={item} />}
@@ -108,4 +105,4 @@ export function BoardItemWrapper({ item, transform }: Props) {
       {item.type === 'arrow'    && <ArrowItemComp     item={item} />}
     </div>
   )
-}
+})

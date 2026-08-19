@@ -7,7 +7,6 @@ import type {
   TaskEntry,
   TextItem,
   CalendarItem,
-  ImageItem,
   CodeBlockItem,
   FileTreeItem,
   PencilItem,
@@ -37,8 +36,8 @@ interface BoardStore {
   activeTool: Tool
   toolOptions: ToolOptions
 
-  addItem: (type: BoardItemType) => void
-  addItemAt: (type: BoardItemType, x: number, y: number, w: number, h: number) => void
+  addItem: (type: BoardItemType) => string
+  addItemAt: (type: BoardItemType, x: number, y: number, w: number, h: number) => string
   updateItem: (id: string, changes: Partial<BoardItem>) => void
   removeItem: (id: string) => void
   bringToFront: (id: string) => void
@@ -120,15 +119,6 @@ function createDefaultItem(
       } satisfies CalendarItem
     }
 
-    case 'image':
-      return {
-        ...base, type: 'image',
-        src: '',
-        alt: '',
-        width: Math.max(w, 240),
-        height: Math.max(h, 180),
-      } satisfies ImageItem
-
     case 'code':
       return {
         ...base, type: 'code',
@@ -205,6 +195,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const newItems = [...items, item]
     set({ items: newItems, selectedId: item.id })
     scheduleSave(newItems, transform)
+    return item.id
   },
 
   addItemAt: (type, x, y, w, h) => {
@@ -219,6 +210,7 @@ export const useBoardStore = create<BoardStore>((set, get) => ({
     const newItems = [...items, item]
     set({ items: newItems, selectedId: item.id })
     scheduleSave(newItems, transform)
+    return item.id
   },
 
   updateItem: (id, changes) => {

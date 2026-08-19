@@ -1,26 +1,34 @@
 .card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1.5px solid rgba(232, 227, 216, 0.15);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 10px;
   min-width: 480px;
   overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
 }
 .dragSpace { height: 24px; }
 .inner { display: flex; min-height: 240px; }
 .calLeft { width: 260px; flex-shrink: 0; padding-bottom: 12px; }
 .header { display: flex; align-items: center; justify-content: space-between; padding: 0 10px 8px 10px; }
-.monthLabel { font-size: 12px; font-weight: 600; color: rgba(232, 227, 216, 0.7); letter-spacing: 0.03em; }
-.navBtn { background: transparent; border: none; color: #3a3a3a; cursor: pointer; font-size: 18px; padding: 0 4px; border-radius: 4px; transition: color 0.15s; line-height: 1; }
+.monthLabel { font-size: 12px; font-weight: 500; color: rgba(232, 227, 216, 0.6); letter-spacing: 0.02em; }
+.navBtn { background: transparent; border: none; color: rgba(232, 227, 216, 0.2); cursor: pointer; font-size: 18px; padding: 0 4px; border-radius: 4px; transition: color var(--transition-fast), transform var(--transition-fast); line-height: 1; }
 .navBtn:hover { color: rgba(232, 227, 216, 0.7); }
+.navBtn:active { transform: scale(0.9); }
 .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; padding: 0 6px; }
-.dayName { text-align: center; font-size: 9px; color: #303030; padding: 4px 0; font-weight: 600; letter-spacing: 0.04em; }
-.day { display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: rgba(232, 227, 216, 0.5); font-size: 11px; cursor: pointer; border-radius: 4px; height: 28px; transition: background 0.1s, color 0.1s; font-family: 'JetBrains Mono', monospace; }
-.day:hover { background: rgba(232, 227, 216, 0.06); color: rgba(232, 227, 216, 0.9); }
-.day.today { font-weight: 700; color: rgba(232, 227, 216, 0.9); outline: 1px solid rgba(232, 227, 216, 0.25); outline-offset: -1px; }
-.day.marked { color: rgba(232, 227, 216, 0.9); background: rgba(232, 227, 216, 0.08); }
-.day.selected { background: rgba(232, 227, 216, 0.12); color: #e8e3d8; }
-.divider { width: 1px; background: rgba(232, 227, 216, 0.07); margin: 8px 0; }
-.notes { flex: 1; display: flex; flex-direction: column; padding: 10px 12px 12px 12px; min-width: 0; }
-.notesDate { font-size: 10px; color: rgba(232, 227, 216, 0.35); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; }
-.notesArea { flex: 1; background: transparent; border: none; outline: none; color: rgba(232, 227, 216, 0.75); font-family: 'Inter', sans-serif; font-size: 12px; line-height: 1.6; resize: none; min-height: 120px; }
-.notesHint { color: #282828; font-size: 11px; margin: auto; align-self: center; text-align: center; }
+.dayName { text-align: center; font-size: 9px; color: rgba(232, 227, 216, 0.15); padding: 4px 0; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.day { display: flex; align-items: center; justify-content: center; background: transparent; border: none; color: rgba(232, 227, 216, 0.4); font-size: 11px; cursor: pointer; border-radius: 6px; height: 28px; transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast); font-family: 'JetBrains Mono', monospace; }
+.day:hover { background: rgba(232, 227, 216, 0.05); color: rgba(232, 227, 216, 0.85); }
+.day:active { transform: scale(0.92); }
+.day.today { font-weight: 700; color: rgba(232, 227, 216, 0.9); outline: 1px solid rgba(232, 227, 216, 0.18); outline-offset: -1px; }
+.day.marked { color: rgba(232, 227, 216, 0.85); background: rgba(232, 227, 216, 0.06); }
+.day.selected { background: rgba(232, 227, 216, 0.1); color: #e8e3d8; }
+.divider { width: 1px; background: rgba(232, 227, 216, 0.05); margin: 8px 0; }
+.notes { flex: 1; display: flex; flex-direction: column; padding: 10px 14px 14px 14px; min-width: 0; }
+.notesDate { font-size: 10px; color: rgba(232, 227, 216, 0.3); margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em; }
+.notesArea { flex: 1; background: transparent; border: none; outline: none; color: rgba(232, 227, 216, 0.7); font-family: 'Outfit', sans-serif; font-size: 12px; line-height: 1.6; resize: none; min-height: 120px; }
+.notesArea::placeholder { color: rgba(232, 227, 216, 0.12); }
+.notesHint { color: rgba(232, 227, 216, 0.1); font-size: 11px; margin: auto; align-self: center; text-align: center; }

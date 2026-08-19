@@ -23,7 +23,6 @@ const IArrow    = () => <Ico><path d="M4 10h12M12 6l4 4-4 4"/><circle cx="4" cy=
 const IText     = () => <Ico><path d="M4 5h12M10 5v11"/></Ico>
 const ITask     = () => <Ico><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10.5l2.5 2.5L13 8"/></Ico>
 const ICalendar = () => <Ico><rect x="3" y="5" width="14" height="12" rx="1.5"/><path d="M3 9h14M7 3v3M13 3v3"/></Ico>
-const IImage    = () => <Ico><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7.5" cy="7.5" r="1.5"/><path d="M3 13l4-4 3 3 2-2 5 5"/></Ico>
 const ICode     = () => <Ico><path d="M7 7L3 10l4 3M13 7l4 3-4 3M11 4l-2 12"/></Ico>
 const ITree     = () => <Ico><path d="M3 5h4M3 10h4M3 15h4"/><path d="M7 5v10M7 7.5h3M7 12.5h3"/><rect x="10" y="4" width="7" height="3" rx="1"/><rect x="10" y="9" width="7" height="3" rx="1"/></Ico>
 const IDelete   = () => <Ico><path d="M5 5l10 10M15 5L5 15"/></Ico>
@@ -45,7 +44,6 @@ const TOOL_DEFS: Array<ToolDef | 'sep'> = [
   { id: 'text',     Icon: IText,     title: 'Text (T)',  special: true },
   { id: 'task',     Icon: ITask,     title: 'Úkol' },
   { id: 'calendar', Icon: ICalendar, title: 'Kalendář' },
-  { id: 'image',    Icon: IImage,    title: 'Obrázek' },
   { id: 'code',     Icon: ICode,     title: 'Kód',       special: true },
   { id: 'filetree', Icon: ITree,     title: 'Strom souborů' },
   'sep',

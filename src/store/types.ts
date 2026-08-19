@@ -7,7 +7,6 @@ export type Tool =
   | 'text'
   | 'task'
   | 'calendar'
-  | 'image'
   | 'code'
   | 'filetree'
   | 'delete'
@@ -29,7 +28,6 @@ export type BoardItemType =
   | 'task'
   | 'text'
   | 'calendar'
-  | 'image'
   | 'code'
   | 'filetree'
   | 'pencil'
@@ -73,11 +71,6 @@ export interface CalendarItem extends BoardItemBase {
   notes: Record<string, string>
 }
 
-export interface ImageItem extends BoardItemBase {
-  type: 'image'
-  src: string
-  alt: string
-}
 
 export interface CodeBlockItem extends BoardItemBase {
   type: 'code'
@@ -129,7 +122,6 @@ export type BoardItem =
   | TaskItem
   | TextItem
   | CalendarItem
-  | ImageItem
   | CodeBlockItem
   | FileTreeItem
   | PencilItem

@@ -1,9 +1,15 @@
 .card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1.5px solid rgba(232, 227, 216, 0.15);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
   border-radius: 10px;
   min-width: 200px;
   overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
 }
 
 .dragSpace {
@@ -20,8 +26,8 @@
 
 .title {
   font-size: 12px;
-  font-weight: 600;
-  color: rgba(232, 227, 216, 0.55);
+  font-weight: 500;
+  color: rgba(232, 227, 216, 0.45);
   cursor: text;
   user-select: none;
   font-family: 'JetBrains Mono', monospace;
@@ -35,10 +41,10 @@
 .titleInput {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(232, 227, 216, 0.3);
-  color: rgba(232, 227, 216, 0.8);
+  border-bottom: 1px solid rgba(232, 227, 216, 0.2);
+  color: rgba(232, 227, 216, 0.75);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   outline: none;
   flex: 1;
   min-width: 0;
@@ -53,24 +59,28 @@
 
 .addBtn {
   background: transparent;
-  border: 1px solid rgba(232, 227, 216, 0.08);
-  color: rgba(232, 227, 216, 0.25);
-  border-radius: 3px;
+  border: 1px solid rgba(232, 227, 216, 0.06);
+  color: rgba(232, 227, 216, 0.2);
+  border-radius: 4px;
   font-size: 9px;
   cursor: pointer;
   padding: 2px 6px;
-  transition: color 0.1s, border-color 0.1s;
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
   font-family: 'JetBrains Mono', monospace;
   white-space: nowrap;
 }
 
 .addBtn:hover {
-  color: rgba(232, 227, 216, 0.65);
-  border-color: rgba(232, 227, 216, 0.25);
+  color: rgba(232, 227, 216, 0.6);
+  border-color: rgba(232, 227, 216, 0.15);
+}
+
+.addBtn:active {
+  transform: scale(0.95);
 }
 
 .emptyHint {
-  color: rgba(232, 227, 216, 0.15);
+  color: rgba(232, 227, 216, 0.1);
   font-size: 11px;
   font-family: 'JetBrains Mono', monospace;
   padding: 2px 12px 8px 12px;
@@ -81,7 +91,7 @@
   padding: 0 0 10px 12px;
 }
 
-/* ── TreeNode styles (shared via module) ── */
+/* ── TreeNode styles ── */
 .node {
   display: flex;
   align-items: center;
@@ -98,10 +108,9 @@
 }
 
 .indentLine {
-  border-left: 1px solid rgba(232, 227, 216, 0.25);
+  border-left: 1px solid rgba(232, 227, 216, 0.1);
 }
 
-/* CSS-only branch connector — no text characters */
 .connectorSpan {
   position: relative;
   display: inline-block;
@@ -110,61 +119,59 @@
   flex-shrink: 0;
 }
 
-/* horizontal line at 50% height */
 .connectorSpan::after {
   content: '';
   position: absolute;
   left: 0;
   top: 50%;
   width: 100%;
-  border-top: 1px solid rgba(232, 227, 216, 0.25);
+  border-top: 1px solid rgba(232, 227, 216, 0.1);
 }
 
-/* └ : vertical line from top to center only */
 .connectorLast::before {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   bottom: 50%;
-  border-left: 1px solid rgba(232, 227, 216, 0.25);
+  border-left: 1px solid rgba(232, 227, 216, 0.1);
 }
 
-/* ├ : vertical line full height */
 .connectorMiddle::before {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  border-left: 1px solid rgba(232, 227, 216, 0.25);
+  border-left: 1px solid rgba(232, 227, 216, 0.1);
 }
 
 .nodeName {
   font-size: 12px;
-  color: rgba(232, 227, 216, 0.45);
+  color: rgba(232, 227, 216, 0.35);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: default;
   user-select: none;
   font-family: 'JetBrains Mono', monospace;
+  transition: color var(--transition-fast);
 }
 
 .nodeName.folder {
-  color: rgba(232, 227, 216, 0.65);
+  color: rgba(232, 227, 216, 0.55);
   cursor: pointer;
 }
 
 .nodeName.folder:hover {
-  color: rgba(232, 227, 216, 0.9);
+  color: rgba(232, 227, 216, 0.85);
 }
 
 .nameInput {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(232, 227, 216, 0.3);
-  color: rgba(232, 227, 216, 0.8);
+  border-bottom: 1px solid rgba(232, 227, 216, 0.2);
+  color: rgba(232, 227, 216, 0.75);
   font-size: 12px;
   outline: none;
   font-family: 'JetBrains Mono', monospace;
@@ -182,15 +189,19 @@
 .actionBtn {
   background: transparent;
   border: none;
-  color: rgba(232, 227, 216, 0.2);
-  border-radius: 2px;
+  color: rgba(232, 227, 216, 0.15);
+  border-radius: 3px;
   font-size: 9px;
   cursor: pointer;
   padding: 1px 4px;
-  transition: color 0.1s;
+  transition: color var(--transition-fast), transform var(--transition-fast);
   font-family: 'JetBrains Mono', monospace;
 }
 
 .actionBtn:hover {
-  color: rgba(232, 227, 216, 0.55);
+  color: rgba(232, 227, 216, 0.5);
+}
+
+.actionBtn:active {
+  transform: scale(0.92);
 }

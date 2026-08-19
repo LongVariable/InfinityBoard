@@ -1,15 +1,21 @@
-﻿:root {
-  --bg-primary: #080808;
-  --card-bg: transparent;
-  --card-border: rgba(232, 227, 216, 0.18);
+:root {
+  --bg-primary: #09090b;
+  --bg-surface: #111114;
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(232, 227, 216, 0.08);
+  --card-border-hover: rgba(232, 227, 216, 0.14);
   --card-bg-tinted: rgba(255, 255, 255, 0.025);
   --accent: #e8e3d8;
   --accent-dim: rgba(232, 227, 216, 0.45);
   --text-cream: #e8e3d8;
-  --text-cream-muted: #bbb6a9;
+  --text-cream-muted: #8a857c;
   --text-muted: #3c3c3c;
   --green-done: #6ee7a0;
   --toolbar-height: 48px;
+  --shadow-tinted: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(232, 227, 216, 0.05);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --transition-fast: 120ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 *,
@@ -36,8 +42,22 @@ body {
 body {
   background-color: var(--bg-primary);
   color: var(--text-cream);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle grain overlay for depth */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
 button {
@@ -59,10 +79,21 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1c1c1c;
+  background: rgba(232, 227, 216, 0.06);
   border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2a2a2a;
+  background: rgba(232, 227, 216, 0.12);
+}
+
+/* Utility animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
 }
